@@ -76,7 +76,6 @@ function toggleSection(section, toggleButton) {
     section.style.maxHeight = '50px';
   } else {
     section.style.maxHeight = '300px'; // Taille ouverte par défaut
-    section.style.maxHeight = '300px'; // Taille ouverte par défaut
   }
 }
 
@@ -156,7 +155,6 @@ function initializeSidebarEvents() {
         if (promptsSection && promptsSection.classList.contains('collapsed')) {
           promptsSection.style.maxHeight = '50px';
         }
-      });
       });
     });
   }
@@ -317,7 +315,6 @@ function initializeSidebarEvents() {
       fabMenu.style.display = 'none';
     }
     const clickedInsideSettings = settingsBtn && (settingsBtn.contains(e.target) || (settingsMenu && settingsMenu.contains(e.target)));
-    if (!clickedInsideSettings && settingsMenu) {
     if (!clickedInsideSettings && settingsMenu) {
       settingsMenu.style.display = 'none';
     }

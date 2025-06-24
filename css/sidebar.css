@@ -127,7 +127,8 @@
   flex-direction: column;
   border-top: 1px solid #D1D1D1;
   /*padding: 10px;*/
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sidebar-section-header {
@@ -160,16 +161,12 @@
 }
 
 /* Par défaut, afficher le contenu */
-.sidebar-section:not(.collapsed) .sidebar-folder-section {
+.sidebar-section:not(.myExtension-collapsed) .sidebar-folder-section,
+.sidebar-section:not(.myExtension-collapsed) .sidebar-prompt-section {
   display: block;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 300px;
   min-height: 50px;
-}
-
-.sidebar-section:not(.collapsed) .sidebar-prompt-section {
-  display: block;
-  overflow-y: scroll;
 }
 
 .sidebar-section.myExtension-collapsed .sidebar-folder-section,
@@ -179,9 +176,6 @@
   overflow: hidden;
 }
 
-.sidebar-section:not(.myExtension-collapsed) .sidebar-folder-section {
-  max-height: 300px;
-}
 
 .sidebar-section .sidebar-folder-section {
   transition: max-height 0.3s ease;
@@ -192,7 +186,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  Flex: 1 1 auto; /* Permet de s'étendre en hauteur */
+  flex: 1 1 auto; /* Permet de s'étendre en hauteur */
   overflow-y: auto; /* Scroll vertical lorsque nécessaire */
   overflow-x: hidden; /* Pas de scroll horizontal */
 }
