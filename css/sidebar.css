@@ -175,8 +175,6 @@
 .sidebar-section:not(.myExtension-collapsed) .sidebar-prompt-section {
   display: block;
   overflow-y: auto;
-  max-height: 300px;
-  min-height: 50px;
 }
 
 .sidebar-section.myExtension-collapsed .sidebar-folder-section,
@@ -189,6 +187,10 @@
 
 .sidebar-section .sidebar-folder-section {
   transition: max-height 0.3s ease;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 /* Folders list avec scroll si nécessaire */
@@ -220,7 +222,6 @@
   padding: 2px; /* Réduction du padding */
   padding-bottom: 1px; /* Ajout pour éviter que les éléments soient trop près du bord */
   overflow-x: hidden;
-  max-height: 80%;
 }
 
 /* Liste des prompts */
