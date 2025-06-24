@@ -129,6 +129,7 @@
   /*padding: 10px;*/
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 .sidebar-section-header {
@@ -233,6 +234,12 @@
   background: #F0F0F0;
 }
 
+.sidebar-prompt-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
 .sidebar-prompt-name {
   font-weight: 600;
   color: #333;
@@ -254,14 +261,9 @@
   flex-wrap: wrap;
   gap: 6px;
   text-align: left;
-  overflow: hidden; /* Cache les éléments en débord */
-  max-height: calc(1.5em); /* Hauteur maximale pour une seule ligne de tags */
-  line-height: 1.5; /* S'assure que la hauteur correspond à celle définie dans les pilules */
+  max-height: 1.5em; /* Hauteur maximale pour une seule ligne de tags */
+  line-height: 1.5;
   overflow: hidden;
-  display: -webkit-box;
-    -webkit-line-clamp: 1; /* number of lines to show */
-           line-clamp: 1; 
-    -webkit-box-orient: vertical;
 }
 
 .sidebar-prompt-tag-pill {
@@ -281,7 +283,7 @@
   overflow: hidden;
   display: -webkit-box;
     -webkit-line-clamp: 4; /* number of lines to show */
-           line-clamp: 1; 
+           line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 

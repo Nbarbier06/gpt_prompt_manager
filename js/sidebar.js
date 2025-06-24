@@ -463,9 +463,9 @@ function refreshPrompts() {
         </div>
         <div class="sidebar-prompt-content">
           <p class="sidebar-prompt-description">${prompt.description}</p>
+          ${tagsHTML}
         </div>
         <div class="sidebar-prompt-actions">
-          ${tagsHTML}
           <button class="sidebar-prompt-action" title="Insérer dans ChatGPT">💬</button>
           <button class="sidebar-prompt-action" title="Favori">${prompt.isFavorite ? '★' : '☆'}</button>
           <button class="sidebar-prompt-action" title="Supprimer">🗑</button>
