@@ -70,12 +70,12 @@ function injectSidebarCSS() {
 // Fonction pour basculer une section
 function toggleSection(section, toggleButton) {
   const isCollapsed = section.classList.toggle('myExtension-collapsed');
-  toggleButton.textContent = isCollapsed ? '◄' : '▼';
+  toggleButton.textContent = isCollapsed ? '►' : '▼';
 
   if (isCollapsed) {
     section.style.maxHeight = '50px';
   } else {
-    section.style.maxHeight = '300px'; // Taille ouverte par défaut
+    section.style.maxHeight = '';
   }
 }
 
@@ -152,8 +152,10 @@ function initializeSidebarEvents() {
 
         // Empêche les changements de taille en recalculant uniquement le contenu
         const promptsSection = document.querySelector('.sidebar-prompts-section');
-        if (promptsSection && promptsSection.classList.contains('collapsed')) {
+        if (promptsSection && promptsSection.classList.contains('myExtension-collapsed')) {
           promptsSection.style.maxHeight = '50px';
+        } else if (promptsSection) {
+          promptsSection.style.maxHeight = '';
         }
       });
     });
@@ -330,11 +332,7 @@ function adjustSectionHeights() {
   const promptsSection = sidebar.querySelector('.sidebar-prompts-section');
 
   if (folderSection && promptsSection) {
-    const availableHeight = sidebar.offsetHeight;
-
-    // Allouer de l'espace dynamique
-    const foldersHeight = folderSection.offsetHeight;
-    promptsSection.style.maxHeight = `${availableHeight - foldersHeight - 50}px`;
+    promptsSection.style.maxHeight = '';
   }
 }
 
