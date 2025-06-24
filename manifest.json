@@ -27,6 +27,7 @@
       "js": [
         "js/services.js",
         "js/integration.js",
+        "js/sidebar.js",
         "js/content.js"
       ],
       "run_at": "document_end"
