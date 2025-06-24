@@ -34,8 +34,8 @@ The extension is now available when you visit [chat.openai.com](https://chat.ope
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request with improvements.
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to get started.
 
 ## License
 
-This project currently has no license. A proper LICENSE file will be added in a future update.
+This project is licensed under the [MIT License](LICENSE).
