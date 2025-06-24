@@ -11,6 +11,15 @@
   color: #333;
 }
 
+/* Utility class to hide native scrollbars */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar {
   position: fixed !important;
   top: 0 !important;
@@ -476,6 +485,7 @@
 .modal-folder-delete-btn {
   background: #ff3b30;
   color: #fff;
+  display: none;
 }
 
 /* Sélection dossiers dans la modal */
@@ -582,4 +592,9 @@
 
 .edit-prompt-button:hover {
   background: rgba(0, 0, 0, 0.1);
+}
+
+/* Hide hidden input used for CSV import */
+.sidebar-import-file-input {
+  display: none;
 }

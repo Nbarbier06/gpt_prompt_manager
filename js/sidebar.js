@@ -70,7 +70,7 @@ function injectSidebarCSS() {
 // Fonction pour basculer une section
 function toggleSection(section, toggleButton) {
   const isCollapsed = section.classList.toggle('myExtension-collapsed');
-  toggleButton.textContent = isCollapsed ? '◄' : '▼';
+  toggleButton.textContent = isCollapsed ? '►' : '▼';
 
   if (isCollapsed) {
     section.style.maxHeight = '50px';
