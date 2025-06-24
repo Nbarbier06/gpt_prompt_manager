@@ -141,7 +141,6 @@
   /*padding: 10px;*/
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: stable;
 }
 
 .sidebar-section-header {
@@ -197,6 +196,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 /* Folders list avec scroll si nécessaire */
@@ -207,6 +207,7 @@
   flex: 1 1 auto; /* Permet de s'étendre en hauteur */
   overflow-y: auto; /* Scroll vertical lorsque nécessaire */
   overflow-x: hidden; /* Pas de scroll horizontal */
+  scrollbar-width: thin;
 }
 
 .sidebar-folder-item {
@@ -228,6 +229,7 @@
   padding: 2px; /* Réduction du padding */
   padding-bottom: 1px; /* Ajout pour éviter que les éléments soient trop près du bord */
   overflow-x: hidden;
+  scrollbar-width: thin;
 }
 
 /* Liste des prompts */
@@ -604,4 +606,30 @@
 /* Hide hidden input used for CSV import */
 .sidebar-import-file-input {
   display: none;
+}
+
+/* Scrollbar styling for folders and prompts */
+.sidebar-folder-list::-webkit-scrollbar,
+.sidebar-folder-section::-webkit-scrollbar,
+.sidebar-prompt-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-folder-list::-webkit-scrollbar-track,
+.sidebar-folder-section::-webkit-scrollbar-track,
+.sidebar-prompt-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-folder-list::-webkit-scrollbar-thumb,
+.sidebar-folder-section::-webkit-scrollbar-thumb,
+.sidebar-prompt-section::-webkit-scrollbar-thumb {
+  background-color: rgba(60, 60, 67, 0.3);
+  border-radius: 3px;
+}
+
+.sidebar-folder-list:hover::-webkit-scrollbar-thumb,
+.sidebar-folder-section:hover::-webkit-scrollbar-thumb,
+.sidebar-prompt-section:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(60, 60, 67, 0.5);
 }
