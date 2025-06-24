@@ -29,7 +29,7 @@ The extension is now available when you visit [chat.openai.com](https://chat.ope
 - `manifest.json` – extension manifest
 - `html/` – sidebar HTML
 - `css/` – stylesheets for the sidebar
-- `js/` – content scripts and services
+- `js/` – modular JavaScript files (services, utilities, sidebar logic)
 - `Image1.png` – example screenshot
 
 ## Contributing

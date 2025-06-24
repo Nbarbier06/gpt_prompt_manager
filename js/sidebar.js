@@ -76,7 +76,6 @@ function toggleSection(section, toggleButton) {
     section.style.maxHeight = '50px';
   } else {
     section.style.maxHeight = '300px'; // Taille ouverte par défaut
-    section.style.maxHeight = '300px'; // Taille ouverte par défaut
   }
 }
 
@@ -156,7 +155,6 @@ function initializeSidebarEvents() {
         if (promptsSection && promptsSection.classList.contains('collapsed')) {
           promptsSection.style.maxHeight = '50px';
         }
-      });
       });
     });
   }
@@ -318,7 +316,6 @@ function initializeSidebarEvents() {
     }
     const clickedInsideSettings = settingsBtn && (settingsBtn.contains(e.target) || (settingsMenu && settingsMenu.contains(e.target)));
     if (!clickedInsideSettings && settingsMenu) {
-    if (!clickedInsideSettings && settingsMenu) {
       settingsMenu.style.display = 'none';
     }
   });
@@ -466,9 +463,9 @@ function refreshPrompts() {
         </div>
         <div class="sidebar-prompt-content">
           <p class="sidebar-prompt-description">${prompt.description}</p>
+          ${tagsHTML}
         </div>
         <div class="sidebar-prompt-actions">
-          ${tagsHTML}
           <button class="sidebar-prompt-action" title="Insérer dans ChatGPT">💬</button>
           <button class="sidebar-prompt-action" title="Favori">${prompt.isFavorite ? '★' : '☆'}</button>
           <button class="sidebar-prompt-action" title="Supprimer">🗑</button>

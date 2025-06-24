@@ -25,7 +25,11 @@
         "*://chatgpt.com/*"
       ],
       "js": [
-        "js/services.js",
+        "js/utils.js",
+        "js/storage.js",
+        "js/promptService.js",
+        "js/folderService.js",
+        "js/csvService.js",
         "js/integration.js",
         "js/sidebar.js",
         "js/content.js"

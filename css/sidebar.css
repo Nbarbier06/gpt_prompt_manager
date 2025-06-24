@@ -127,7 +127,9 @@
   flex-direction: column;
   border-top: 1px solid #D1D1D1;
   /*padding: 10px;*/
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 .sidebar-section-header {
@@ -160,16 +162,12 @@
 }
 
 /* Par défaut, afficher le contenu */
-.sidebar-section:not(.collapsed) .sidebar-folder-section {
+.sidebar-section:not(.myExtension-collapsed) .sidebar-folder-section,
+.sidebar-section:not(.myExtension-collapsed) .sidebar-prompt-section {
   display: block;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 300px;
   min-height: 50px;
-}
-
-.sidebar-section:not(.collapsed) .sidebar-prompt-section {
-  display: block;
-  overflow-y: scroll;
 }
 
 .sidebar-section.myExtension-collapsed .sidebar-folder-section,
@@ -179,9 +177,6 @@
   overflow: hidden;
 }
 
-.sidebar-section:not(.myExtension-collapsed) .sidebar-folder-section {
-  max-height: 300px;
-}
 
 .sidebar-section .sidebar-folder-section {
   transition: max-height 0.3s ease;
@@ -192,7 +187,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  Flex: 1 1 auto; /* Permet de s'étendre en hauteur */
+  flex: 1 1 auto; /* Permet de s'étendre en hauteur */
   overflow-y: auto; /* Scroll vertical lorsque nécessaire */
   overflow-x: hidden; /* Pas de scroll horizontal */
 }
@@ -239,6 +234,12 @@
   background: #F0F0F0;
 }
 
+.sidebar-prompt-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
 .sidebar-prompt-name {
   font-weight: 600;
   color: #333;
@@ -260,14 +261,9 @@
   flex-wrap: wrap;
   gap: 6px;
   text-align: left;
-  overflow: hidden; /* Cache les éléments en débord */
-  max-height: calc(1.5em); /* Hauteur maximale pour une seule ligne de tags */
-  line-height: 1.5; /* S'assure que la hauteur correspond à celle définie dans les pilules */
+  max-height: 1.5em; /* Hauteur maximale pour une seule ligne de tags */
+  line-height: 1.5;
   overflow: hidden;
-  display: -webkit-box;
-    -webkit-line-clamp: 1; /* number of lines to show */
-           line-clamp: 1; 
-    -webkit-box-orient: vertical;
 }
 
 .sidebar-prompt-tag-pill {
@@ -287,7 +283,7 @@
   overflow: hidden;
   display: -webkit-box;
     -webkit-line-clamp: 4; /* number of lines to show */
-           line-clamp: 1; 
+           line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
