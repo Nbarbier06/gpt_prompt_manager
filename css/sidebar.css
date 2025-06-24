@@ -1,3 +1,7 @@
+.sidebar *, .sidebar *::before, .sidebar *::after {
+  box-sizing: border-box;
+}
+
 .toggle-button-style {
   position: fixed;
   top: 160px;
@@ -64,6 +68,14 @@
 
 .sidebar-header button:hover {
   background: rgba(0,0,0,0.05);
+}
+
+.sidebar button:focus,
+.sidebar input:focus,
+.sidebar textarea:focus,
+.sidebar select:focus {
+  outline: 2px solid #007AFF;
+  outline-offset: 2px;
 }
 
 /* Section Navigation */
@@ -494,6 +506,9 @@
   text-align: left;
   color: inherit;
   width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
@@ -508,6 +523,9 @@
   text-align: left;
   color: inherit;
   width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-button:hover,
