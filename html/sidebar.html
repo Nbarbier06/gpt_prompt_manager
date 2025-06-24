@@ -1,0 +1,94 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Prompts Library</span>
+    <button class="sidebar-settings-btn" title="Options">⚙</button>
+  </div>
+
+  <div id="myExtension-notification-container"></div>
+
+  <!-- Navigation sans scrollbar -->
+  <div class="sidebar-section sidebar-nav-section no-scrollbar">
+    <h4 class="sidebar-section-title">Navigation</h4>
+    <div class="sidebar-search-container">
+      <input type="text" class="sidebar-search" placeholder="Rechercher..." />
+    </div>
+    <div class="sidebar-nav">
+      <ul>
+        <li class="sidebar-nav-item" data-special="all">
+          <button class="nav-button">Tous les prompts</button>
+        </li>
+        <li class="sidebar-nav-item" data-special="favorites">
+          <button class="nav-button">Favoris</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Dossiers -->
+  <div class="sidebar-section sidebar-folders-section">
+    <div class="sidebar-section-header">
+      <h4 class="sidebar-section-title">Dossiers</h4>
+      <button class="sidebar-section-toggle" title="Replier/déplier">▼</button>
+    </div>
+    <div class="sidebar-folder-section">
+      <ul class="sidebar-folder-list">
+        <li class="sidebar-folder-item" data-folder-id="1">
+          <button class="folder-button">Nom du dossier</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Prompts -->
+  <div class="sidebar-section sidebar-prompts-section">
+    <div class="sidebar-section-header">
+      <h4 class="sidebar-section-title">Prompts</h4>
+      <button class="sidebar-section-toggle" title="Replier/déplier">▼</button>
+    </div>
+    <div class="sidebar-prompt-section">
+      <ul class="sidebar-prompt-list"></ul>
+    </div>
+  </div>
+
+  <button class="sidebar-fab" title="Ajouter">+</button>
+  <div class="sidebar-fab-menu">
+    <button class="fab-create-folder-btn">Créer un dossier</button>
+    <button class="fab-create-prompt-btn">Créer un prompt</button>
+  </div>
+
+  <div class="sidebar-settings-menu">
+    <button class="sidebar-import-btn">Importer</button>
+    <button class="sidebar-export-btn">Exporter</button>
+  </div>
+</div>
+
+<!-- Modal prompt -->
+<div class="sidebar-modal-backdrop" style="display:none;">
+  <div class="sidebar-modal">
+    <h3 class="modal-title">Créer/Editer le prompt</h3>
+    <label>Nom : <input type="text" class="modal-prompt-name"></label>
+    <label>Description : <textarea class="modal-prompt-description"></textarea></label>
+    <label>Prompt : <textarea class="modal-prompt-text"></textarea></label>
+    <label>Tags (séparés par des virgules) : <input type="text" class="modal-prompt-tags"></label>
+    <label>Dossiers (sélection multiple en maintenant CTRL) :
+      <select class="modal-prompt-folders" multiple size="5"></select>
+    </label>
+    <button class="modal-save-btn">Enregistrer</button>
+    <button class="modal-cancel-btn">Annuler</button>
+  </div>
+</div>
+
+<!-- Modal folder -->
+<div class="sidebar-modal-backdrop-folder" style="display:none;">
+  <div class="sidebar-modal">
+    <h3 class="modal-title">Éditer le dossier</h3>
+    <label>Nom du dossier : <input type="text" class="modal-folder-name"></label>
+    <div class="modal-folder-buttons">
+      <button class="modal-folder-save-btn">Enregistrer</button>
+      <button class="modal-folder-cancel-btn">Annuler</button>
+      <button class="modal-folder-delete-btn" style="display:none;">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" class="sidebar-import-file-input" accept=".csv" style="display:none;" />

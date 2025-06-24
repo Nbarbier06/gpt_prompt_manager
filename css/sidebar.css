@@ -1,0 +1,589 @@
+.toggle-button-style {
+  position: fixed;
+  top: 160px;
+  right: 10px;
+  z-index: 2147483647;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 18px;
+  padding: 4px 8px;
+  color: #333;
+}
+
+.sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 300px;
+  height: 100vh;
+  background: #F2F2F2; /* gris très clair */
+  border-left: 1px solid #D1D1D1; /* léger séparateur */
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 2147483647 !important;
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.sidebar-visible {
+  transform: translateX(0) !important;
+}
+
+/* Header */
+.sidebar-header {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.sidebar-title {
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  flex:1;
+}
+
+.sidebar-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #444;
+}
+
+.sidebar-header button:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Section Navigation */
+.sidebar-nav-section {
+  flex: 0 0 auto;
+  padding: 10px;
+  border-top: 1px solid #D1D1D1;
+}
+
+.sidebar-search-container {
+  margin-bottom: 10px;
+  flex: 0 0 auto;
+}
+
+.sidebar-search {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+}
+
+.sidebar-search::placeholder {
+  color: #999;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav-item {
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.myExtension-selected {
+  background: #007AFF !important;
+  color: #fff !important;
+}
+
+/* Sections Dossiers et Prompts partagent l'espace */
+.sidebar-folders-section,
+.sidebar-prompts-section {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 50px;
+  flex-direction: column;
+  border-top: 1px solid #D1D1D1;
+  /*padding: 10px;*/
+  overflow: scroll;
+}
+
+.sidebar-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sidebar-section-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 15px;
+  color: #555;
+}
+
+.sidebar-section-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #444;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.sidebar-section-toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Par défaut, afficher le contenu */
+.sidebar-section:not(.collapsed) .sidebar-folder-section {
+  display: block;
+  overflow-y: scroll;
+  max-height: 300px;
+  min-height: 50px;
+}
+
+.sidebar-section:not(.collapsed) .sidebar-prompt-section {
+  display: block;
+  overflow-y: scroll;
+}
+
+.sidebar-section.myExtension-collapsed .sidebar-folder-section,
+.sidebar-section.myExtension-collapsed .sidebar-prompt-section {
+  max-height: 50px;
+  min-height: 50px;
+  overflow: hidden;
+}
+
+.sidebar-section:not(.myExtension-collapsed) .sidebar-folder-section {
+  max-height: 300px;
+}
+
+.sidebar-section .sidebar-folder-section {
+  transition: max-height 0.3s ease;
+}
+
+/* Folders list avec scroll si nécessaire */
+.sidebar-folder-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  Flex: 1 1 auto; /* Permet de s'étendre en hauteur */
+  overflow-y: auto; /* Scroll vertical lorsque nécessaire */
+  overflow-x: hidden; /* Pas de scroll horizontal */
+}
+
+.sidebar-folder-item {
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.sidebar-folder-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Prompts section */
+.sidebar-prompt-section {
+  flex: 1 1 auto; /* Occupe tout l'espace disponible */
+  overflow-y: auto; /* Ajout d'une scrollbar verticale si nécessaire */
+  padding: 2px; /* Réduction du padding */
+  padding-bottom: 1px; /* Ajout pour éviter que les éléments soient trop près du bord */
+  overflow-x: hidden;
+  max-height: 80%;
+}
+
+/* Liste des prompts */
+.sidebar-prompt-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 100px 0; 
+}
+
+.sidebar-prompt-item {
+  border: 1px solid #CCC;
+  background-color: #FAFAFA;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 8px;
+  transition: background 0.2s;
+}
+
+.sidebar-prompt-item:hover {
+  background: #F0F0F0;
+}
+
+.sidebar-prompt-name {
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  font-size: 14px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1; 
+    -webkit-box-orient: vertical;
+}
+
+/* Tags en pilules */
+.sidebar-prompt-tags {
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  text-align: left;
+  overflow: hidden; /* Cache les éléments en débord */
+  max-height: calc(1.5em); /* Hauteur maximale pour une seule ligne de tags */
+  line-height: 1.5; /* S'assure que la hauteur correspond à celle définie dans les pilules */
+  overflow: hidden;
+  display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+           line-clamp: 1; 
+    -webkit-box-orient: vertical;
+}
+
+.sidebar-prompt-tag-pill {
+  background: #007AFF;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2px 5px;
+  margin-right: 3px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.sidebar-prompt-description {
+  font-size: 12px;
+  color: #555;
+  text-align: left;
+  overflow: hidden;
+  display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+           line-clamp: 1; 
+    -webkit-box-orient: vertical;
+}
+
+.sidebar-prompt-actions {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.sidebar-prompt-action {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.sidebar-prompt-action:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* FAB et menus */
+.sidebar-fab {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: #007AFF;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.sidebar-fab:hover {
+  background: #006BE6;
+}
+
+.sidebar-fab-menu {
+  position: absolute;
+  bottom: 55px;
+  right: 15px;
+  background: #fff;
+  border: 1px solid #CCC;
+  display: none;
+  flex-direction: column;
+  z-index: 1000000;
+  color: #333;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-fab-menu button {
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: #333;
+  font-size: 13px;
+}
+
+.sidebar-fab-menu button:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.sidebar-settings-menu {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  background: #fff;
+  border: 1px solid #CCC;
+  display: none;
+  flex-direction: column;
+  z-index: 1000000;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar-settings-menu button {
+  background: none;
+  border: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: #333;
+  font-size: 13px;
+}
+
+.sidebar-settings-menu button:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Modals */
+.sidebar-modal-backdrop,
+.sidebar-modal-backdrop-folder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000000;
+}
+
+.sidebar-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  max-width: 90%;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-modal .modal-title {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.sidebar-modal label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar-modal input,
+.sidebar-modal textarea,
+.sidebar-modal select {
+  width: 100%;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+  padding: 6px;
+  color: #333;
+  font-size: 13px;
+  background: #fff;
+  font-weight: normal;
+}
+
+.modal-save-btn,
+.modal-cancel-btn,
+.modal-folder-save-btn,
+.modal-folder-cancel-btn,
+.modal-folder-delete-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.modal-save-btn,
+.modal-folder-save-btn {
+  background: #007aff;
+  color: #fff;
+}
+
+.modal-cancel-btn,
+.modal-folder-cancel-btn {
+  background: #E0E0E0;
+  color: #333;
+}
+
+.modal-folder-delete-btn {
+  background: #ff3b30;
+  color: #fff;
+}
+
+/* Sélection dossiers dans la modal */
+.sidebar-modal select.modal-prompt-folders option:checked {
+  background-color: #007aff;
+  color: #fff;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 2px;
+  font-size: inherit;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  width: 100%;
+}
+
+
+.folder-button,
+.prompt-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  font-size: inherit;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  width: 100%;
+}
+
+.nav-button:hover,
+.folder-button:hover,
+.prompt-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+}
+
+/* Notifications */
+#myExtension-notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.myExtension-notification {
+  background: #007AFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeInOut 3s ease forwards;
+}
+
+.myExtension-notification.error {
+  background: #FF3B30;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.sidebar-prompt-header {
+  position: relative;
+  height: 20px;
+}
+
+.edit-prompt-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.edit-prompt-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
