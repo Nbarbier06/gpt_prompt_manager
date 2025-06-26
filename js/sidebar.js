@@ -446,10 +446,12 @@ function refreshPrompts() {
       const nameElement = existingItem.querySelector('.sidebar-prompt-name');
       const tagsElement = existingItem.querySelector('.sidebar-prompt-tags');
       const descriptionElement = existingItem.querySelector('.sidebar-prompt-description');
+      const previewElement = existingItem.querySelector('.sidebar-prompt-preview');
 
       if (nameElement) nameElement.textContent = prompt.name;
       if (tagsElement) tagsElement.innerHTML = tagsHTML;
       if (descriptionElement) descriptionElement.textContent = prompt.description;
+      if (previewElement) previewElement.textContent = textPreview;
     } else {
       const li = document.createElement('li');
       li.className = 'sidebar-prompt-item'; 
@@ -461,6 +463,7 @@ function refreshPrompts() {
         </div>
         <div class="sidebar-prompt-content">
           <p class="sidebar-prompt-description">${prompt.description}</p>
+          <p class="sidebar-prompt-preview">${textPreview}</p>
           ${tagsHTML}
         </div>
         <div class="sidebar-prompt-actions">
