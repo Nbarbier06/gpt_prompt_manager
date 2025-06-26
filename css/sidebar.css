@@ -26,9 +26,10 @@
   right: 0 !important;
   width: 300px;
   height: 100vh;
-  background: #F2F2F2; /* gris très clair */
-  border-left: 1px solid #D1D1D1; /* léger séparateur */
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  background: linear-gradient(to bottom, #fbfbfd 0%, #e9e9eb 100%);
+  border-left: 1px solid #c7c7cc;
+  box-shadow: 0 0 8px rgba(60,60,67,0.08);
+  backdrop-filter: saturate(180%) blur(20px);
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: #444;
   display: flex;
@@ -51,6 +52,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  background: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 .sidebar-title {
@@ -72,7 +75,7 @@
 }
 
 .sidebar-header button:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 /* Section Navigation */
@@ -90,7 +93,7 @@
 .sidebar-search {
   width: 100%;
   padding: 6px 8px;
-  border: 1px solid #CCC;
+  border: 1px solid #d2d2d7;
   border-radius: 6px;
   font-size: 13px;
   color: #333;
@@ -119,7 +122,7 @@
 }
 
 .sidebar-nav-item:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 .myExtension-selected {
@@ -138,7 +141,6 @@
   /*padding: 10px;*/
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: stable;
 }
 
 .sidebar-section-header {
@@ -146,6 +148,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 6px;
 }
 
 .sidebar-section-title {
@@ -167,7 +172,7 @@
 }
 
 .sidebar-section-toggle:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 /* Par défaut, afficher le contenu */
@@ -191,6 +196,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 /* Folders list avec scroll si nécessaire */
@@ -201,6 +207,7 @@
   flex: 1 1 auto; /* Permet de s'étendre en hauteur */
   overflow-y: auto; /* Scroll vertical lorsque nécessaire */
   overflow-x: hidden; /* Pas de scroll horizontal */
+  scrollbar-width: thin;
 }
 
 .sidebar-folder-item {
@@ -212,7 +219,7 @@
 }
 
 .sidebar-folder-item:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 /* Prompts section */
@@ -222,6 +229,7 @@
   padding: 2px; /* Réduction du padding */
   padding-bottom: 1px; /* Ajout pour éviter que les éléments soient trop près du bord */
   overflow-x: hidden;
+  scrollbar-width: thin;
 }
 
 /* Liste des prompts */
@@ -232,8 +240,8 @@
 }
 
 .sidebar-prompt-item {
-  border: 1px solid #CCC;
-  background-color: #FAFAFA;
+  border: 1px solid #d2d2d7;
+  background-color: rgba(255,255,255,0.8);
   border-radius: 6px;
   padding: 10px;
   margin-bottom: 8px;
@@ -241,7 +249,7 @@
 }
 
 .sidebar-prompt-item:hover {
-  background: #F0F0F0;
+  background: rgba(60,60,67,0.1);
 }
 
 .sidebar-prompt-content {
@@ -297,6 +305,18 @@
     -webkit-box-orient: vertical;
 }
 
+.sidebar-prompt-preview {
+  font-size: 12px;
+  color: #777;
+  text-align: left;
+  margin: 4px 0;
+  overflow: hidden;
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+           line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .sidebar-prompt-actions {
   display: flex;
   gap: 5px;
@@ -316,7 +336,7 @@
 }
 
 .sidebar-prompt-action:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 /* FAB et menus */
@@ -348,7 +368,7 @@
   bottom: 55px;
   right: 15px;
   background: #fff;
-  border: 1px solid #CCC;
+  border: 1px solid #d2d2d7;
   display: none;
   flex-direction: column;
   z-index: 1000000;
@@ -370,7 +390,7 @@
 }
 
 .sidebar-fab-menu button:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 .sidebar-settings-menu {
@@ -378,7 +398,7 @@
   top: 40px;
   right: 10px;
   background: #fff;
-  border: 1px solid #CCC;
+  border: 1px solid #d2d2d7;
   display: none;
   flex-direction: column;
   z-index: 1000000;
@@ -399,7 +419,7 @@
 }
 
 .sidebar-settings-menu button:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(60,60,67,0.08);
 }
 
 /* Modals */
@@ -448,7 +468,7 @@
 .sidebar-modal textarea,
 .sidebar-modal select {
   width: 100%;
-  border: 1px solid #CCC;
+  border: 1px solid #d2d2d7;
   border-radius: 6px;
   padding: 6px;
   color: #333;
@@ -524,7 +544,7 @@
 .nav-button:hover,
 .folder-button:hover,
 .prompt-button:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(60,60,67,0.08);
   border-radius: 6px;
 }
 
@@ -598,4 +618,30 @@
 /* Hide hidden input used for CSV import */
 .sidebar-import-file-input {
   display: none;
+}
+
+/* Scrollbar styling for folders and prompts */
+.sidebar-folder-list::-webkit-scrollbar,
+.sidebar-folder-section::-webkit-scrollbar,
+.sidebar-prompt-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-folder-list::-webkit-scrollbar-track,
+.sidebar-folder-section::-webkit-scrollbar-track,
+.sidebar-prompt-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-folder-list::-webkit-scrollbar-thumb,
+.sidebar-folder-section::-webkit-scrollbar-thumb,
+.sidebar-prompt-section::-webkit-scrollbar-thumb {
+  background-color: rgba(60, 60, 67, 0.3);
+  border-radius: 3px;
+}
+
+.sidebar-folder-list:hover::-webkit-scrollbar-thumb,
+.sidebar-folder-section:hover::-webkit-scrollbar-thumb,
+.sidebar-prompt-section:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(60, 60, 67, 0.5);
 }
